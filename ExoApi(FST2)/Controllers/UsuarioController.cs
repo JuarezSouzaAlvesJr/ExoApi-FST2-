@@ -1,20 +1,19 @@
-﻿using ExoApi_FST2_.Models;
-using ExoApi_FST2_.Repositories;
+﻿using ExoApi_FST2_.Interfaces;
+using ExoApi_FST2_.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExoApi_FST2_.Controllers
 {
-    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ProjetoController : ControllerBase
+    public class UsuarioController : ControllerBase
     {
-        private readonly ProjetoRepository _projetoRepository;
+        private readonly IUsuarioRepository _iUsuarioRepository;
 
-        public ProjetoController(ProjetoRepository projetoRepository)
+        public UsuarioController(IUsuarioRepository iUsuarioRepository)
         {
-            _projetoRepository = projetoRepository;
+            _iUsuarioRepository = iUsuarioRepository;
         }
 
         [HttpGet]
@@ -22,7 +21,7 @@ namespace ExoApi_FST2_.Controllers
         {
             try
             {
-                return Ok(_projetoRepository.Listar());
+                return Ok(_iUsuarioRepository.Listar());
             }
             catch (Exception e)
             {
@@ -35,12 +34,12 @@ namespace ExoApi_FST2_.Controllers
         {
             try
             {
-                Projeto projetoBuscado = _projetoRepository.BuscarPorId(id);
-                if (projetoBuscado == null)
+                Usuario usuarioEncontrado = _iUsuarioRepository.BuscarPorId(id);
+                if (usuarioEncontrado == null)
                 {
                     return NotFound();
                 }
-                return Ok(projetoBuscado);
+                return Ok(usuarioEncontrado);
             }
             catch (Exception e)
             {
@@ -49,13 +48,28 @@ namespace ExoApi_FST2_.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(Projeto projeto)
+        public IActionResult Cadastrar(Usuario usuario)
         {
             try
             {
-                _projetoRepository.Cadastrar(projeto);
+                _iUsuarioRepository.Cadastrar(usuario);
 
                 return StatusCode(201);
+                //return Ok("Usuario cadastrado com sucesso.");
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        [HttpPut("{id}")]//Método para alteração
+        public IActionResult Alterar(int id, Usuario usuario)
+        {
+            try
+            {
+                _iUsuarioRepository.Atualizar(id, usuario);
+                return Ok("Dados alterados com sucesso.");
             }
             catch (Exception e)
             {
@@ -68,22 +82,8 @@ namespace ExoApi_FST2_.Controllers
         {
             try
             {
-                _projetoRepository.Deletar(id);
-                return Ok("Projeto removido com sucesso.");
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult Alterar(int id, Projeto projeto)
-        {
-            try
-            {
-                _projetoRepository.Atualizar(id, projeto);
-                return StatusCode(204);
+                _iUsuarioRepository.Deletar(id);
+                return Ok("Usuário removido com sucesso.");
             }
             catch (Exception e)
             {

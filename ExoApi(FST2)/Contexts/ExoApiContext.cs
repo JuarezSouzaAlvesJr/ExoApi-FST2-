@@ -9,6 +9,7 @@ namespace ExoApi_FST2_.Contexts
         {
         }
         public ExoApiContext(DbContextOptions<ExoApiContext>options): base(options){}
+
         // vamos utilizar esse método para configurar o banco de dados
         protected override void
         OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -21,6 +22,8 @@ namespace ExoApi_FST2_.Contexts
         }
         // dbset representa as entidades que serão utilizadas nas operações de leitura, criação, atualização e deleção
         public DbSet<Projeto> Projetos { get; set; }
+
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 
 }
