@@ -1,5 +1,6 @@
 ﻿using ExoApi_FST2_.Models;
 using ExoApi_FST2_.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace ExoApi_FST2_.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProjetoController : ControllerBase
     {
         private readonly ProjetoRepository _projetoRepository;
@@ -30,6 +32,7 @@ namespace ExoApi_FST2_.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {

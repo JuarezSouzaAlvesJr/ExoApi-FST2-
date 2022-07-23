@@ -57,3 +57,4 @@ C:\Users\jdeso\Downloads\SENAI 2\UC-14 (Desenvolvimento de Apis)\ExoApi(FST2)\Ex
 C:\Users\jdeso\Downloads\SENAI 2\UC-14 (Desenvolvimento de Apis)\ExoApi(FST2)\ExoApi(FST2)\obj\Debug\net6.0\ExoApi(FST2).pdb
 C:\Users\jdeso\Downloads\SENAI 2\UC-14 (Desenvolvimento de Apis)\ExoApi(FST2)\ExoApi(FST2)\obj\Debug\net6.0\ExoApi(FST2).genruntimeconfig.cache
 C:\Users\jdeso\Downloads\SENAI 2\UC-14 (Desenvolvimento de Apis)\ExoApi(FST2)\ExoApi(FST2)\obj\Debug\net6.0\ref\ExoApi(FST2).dll
+C:\Users\jdeso\Downloads\SENAI 2\UC-14 (Desenvolvimento de Apis)\ExoApi(FST2)\ExoApi(FST2)\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
